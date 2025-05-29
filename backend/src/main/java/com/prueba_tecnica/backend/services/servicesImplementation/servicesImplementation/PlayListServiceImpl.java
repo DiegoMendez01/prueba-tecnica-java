@@ -2,6 +2,8 @@ package com.prueba_tecnica.backend.services.servicesImplementation.servicesImple
 
 import com.prueba_tecnica.backend.dto.PlayListRequest;
 import com.prueba_tecnica.backend.dto.PlayListResponse;
+import com.prueba_tecnica.backend.exceptions.BadRequestException;
+import com.prueba_tecnica.backend.exceptions.ResourceNotFoundException;
 import com.prueba_tecnica.backend.mappers.PlayListMapper;
 import com.prueba_tecnica.backend.models.PlayList;
 import com.prueba_tecnica.backend.repositories.PlayListRepository;
@@ -23,7 +25,7 @@ public class PlayListServiceImpl implements PlayListService {
     @Override
     public PlayListResponse createPlayList(PlayListRequest request) {
         if (playListRepository.existsByName(request.name())) {
-            throw new IllegalArgumentException("El nombre ya existe");
+            throw new BadRequestException("El nombre ya existe.");
         }
 
         PlayList playlist = playListMapper.toEntity(request);
@@ -44,13 +46,13 @@ public class PlayListServiceImpl implements PlayListService {
     public PlayListResponse getPlayListByName(String name) {
         return playListRepository.findByName(name)
                 .map(playListMapper::toResponse)
-                .orElse(null);
+                .orElseThrow(() -> new ResourceNotFoundException("Lista no encontrada con nombre: " + name));
     }
 
     @Override
     public boolean deletePlayListByName(String name) {
         if (!playListRepository.existsByName(name)) {
-            return false;
+            throw new ResourceNotFoundException("No se puede eliminar. Lista no encontrada: " + name);
         }
         playListRepository.deleteByName(name);
         return true;
