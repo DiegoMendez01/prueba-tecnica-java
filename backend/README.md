@@ -40,6 +40,12 @@ spring:
       path: /h2-console
 ```
 
+## Swagger UI
+
+Puedes acceder a la documentación interactiva de la API en:
+
+`http://localhost:8080/swagger-ui/index.html`
+
 ## Credenciales Basic Auth
 
 Para acceder a los endpoints protegidos usa:
