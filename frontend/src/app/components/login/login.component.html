@@ -1,0 +1,19 @@
+<div class="login-container">
+  <h2>Iniciar Sesión</h2>
+
+  <div *ngIf="errorMessage" class="error-message">
+    {{ errorMessage }}
+  </div>
+
+  <form (submit)="onLogin()">
+    <label>
+      Usuario:
+      <input type="text" [(ngModel)]="username" name="username" required />
+    </label>
+    <label>
+      Contraseña:
+      <input type="password" [(ngModel)]="password" name="password" required />
+    </label>
+    <button type="submit">Ingresar</button>
+  </form>
+</div>
