@@ -1,0 +1,25 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:playlistsdb
+    driver-class-name: org.h2.Driver
+    username: diego
+    password: diego123
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    database-platform: org.hibernate.dialect.H2Dialect
+  application:
+    name: backend
+
+spring.security:
+  user:
+    name: admin
+    password: admin123
+
+server:
+  port: 8080
