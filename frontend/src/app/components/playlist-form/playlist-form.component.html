@@ -1,0 +1,65 @@
+<h2>Crear Playlist</h2>
+
+<form [formGroup]="playlistForm" (ngSubmit)="onSubmit()">
+  <div class="form-group">
+    <label for="name">Nombre *</label>
+    <input id="name" type="text" formControlName="name" />
+    <div *ngIf="submitted && playlistForm.controls['name'].invalid" class="error">
+      El nombre es obligatorio.
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="description">Descripción</label>
+    <textarea id="description" formControlName="description"></textarea>
+  </div>
+
+  <div formArrayName="songs" class="form-group">
+    <h3>Canciones</h3>
+
+    <div *ngFor="let song of songs.controls; let i = index" [formGroupName]="i" class="song-group">
+      <div class="form-subgroup">
+        <label for="title">Título *</label>
+        <input type="text" formControlName="title" />
+        <div *ngIf="submitted && song.get('title')?.invalid" class="error">
+          El título es obligatorio.
+        </div>
+      </div>
+
+      <div class="form-subgroup">
+        <label>Artista</label>
+        <input type="text" formControlName="artist" />
+      </div>
+
+      <div class="form-subgroup">
+        <label>Álbum</label>
+        <input type="text" formControlName="album" />
+      </div>
+
+      <div class="form-subgroup">
+        <label>Año</label>
+        <input type="number" formControlName="year" min="1900" max="{{ currentYear }}" />
+      </div>
+
+      <div class="form-subgroup">
+        <label>Género</label>
+        <input type="text" formControlName="genre" />
+      </div>
+
+      <button type="button" class="secondary" (click)="removeSong(i)">Eliminar canción</button>
+      <hr />
+    </div>
+
+    <button type="button" class="secondary" (click)="addSong()">Agregar canción</button>
+  </div>
+
+  <button type="submit" class="primary">Crear</button>
+</form>
+
+<div *ngIf="successMessage" class="success-message">
+  {{ successMessage }}
+</div>
+
+<div *ngIf="errorMessage" class="error-message">
+  {{ errorMessage }}
+</div>
