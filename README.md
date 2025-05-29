@@ -108,6 +108,16 @@ Abre en tu navegador:
 
 La aplicación se recargará automáticamente cuando hagas cambios en el código.
 
+# 🔐 Inicio de Sesión obligatorio
+
+✅ IMPORTANTE:
+Para poder acceder a las funcionalidades del frontend (listar, crear o eliminar playlists), debes iniciar sesión con las credenciales válidas:
+
+- **Usuario:** `admin`
+- **Contraseña:** `admin123`
+
+Si no has iniciado sesión, la interfaz no mostrará las opciones ni realizará llamadas a la API.
+
 ## 📖 Uso
 
 Desde la interfaz frontend podrás listar, crear y eliminar listas de reproducción.
