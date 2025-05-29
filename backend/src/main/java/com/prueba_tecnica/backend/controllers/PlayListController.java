@@ -13,6 +13,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/lists")
 @RequiredArgsConstructor
+@CrossOrigin(origins = "*")
 public class PlayListController {
     private final PlayListService playListService;
 
