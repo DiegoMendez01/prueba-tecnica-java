@@ -2,7 +2,6 @@ package com.prueba_tecnica.backend.services.servicesImplementation;
 
 import com.prueba_tecnica.backend.dto.PlayListRequest;
 import com.prueba_tecnica.backend.dto.PlayListResponse;
-import com.prueba_tecnica.backend.models.PlayList;
 
 import java.util.List;
 
