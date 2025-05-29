@@ -1,0 +1,64 @@
+.playlist-list-container {
+  max-width: 700px;
+  margin: 2rem auto;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.search-input {
+  width: 100%;
+  padding: 0.5rem 0.8rem;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 6px;
+  border: 1.5px solid #ccc;
+  box-sizing: border-box;
+}
+
+.playlist-card {
+  border: 1.5px solid #ddd;
+  border-radius: 8px;
+  padding: 1rem 1.2rem;
+  margin-bottom: 1.3rem;
+  background-color: #fefefe;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+.playlist-card h3 {
+  margin-top: 0;
+  margin-bottom: 0.3rem;
+  color: #333;
+}
+
+.playlist-card ul {
+  padding-left: 1.2rem;
+  margin-top: 0.3rem;
+  margin-bottom: 0.8rem;
+}
+
+.playlist-card button {
+  background-color: #ef4444;
+  border: none;
+  padding: 0.5rem 1rem;
+  color: white;
+  font-weight: 600;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.playlist-card button:hover {
+  background-color: #b91c1c;
+}
+
+.error-message {
+  color: #b91c1c;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.no-results {
+  text-align: center;
+  color: #777;
+  font-style: italic;
+}

@@ -1,1 +1,40 @@
-<p>playlist-list works!</p>
+<div class="playlist-list-container">
+  <h2>Mis Playlists</h2>
+
+  <input
+    type="text"
+    placeholder="Buscar por nombre..."
+    [(ngModel)]="filterText"
+    (input)="applyFilter()"
+    class="search-input"
+  />
+
+  <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+
+  <div *ngIf="filteredPlaylists.length === 0" class="no-results">
+    No se encontraron playlists.
+  </div>
+
+  <div *ngFor="let playlist of filteredPlaylists" class="playlist-card">
+    <h3>{{ playlist.name }}</h3>
+    <p *ngIf="playlist.description">{{ playlist.description }}</p>
+
+    <div *ngIf="playlist.songs && playlist.songs.length > 0; else noSongs">
+      <h4>Canciones:</h4>
+      <ul>
+        <li *ngFor="let song of playlist.songs">
+          <strong>{{ song.title }}</strong>
+          <span *ngIf="song.artist"> - {{ song.artist }}</span>
+          <span *ngIf="song.album"> ({{ song.album }})</span>
+          <span *ngIf="song.year"> - {{ song.year }}</span>
+          <span *ngIf="song.genre"> - {{ song.genre }}</span>
+        </li>
+      </ul>
+    </div>
+    <ng-template #noSongs>
+      <p><em>Esta playlist no tiene canciones.</em></p>
+    </ng-template>
+
+    <button (click)="deletePlaylist(playlist.name)">Eliminar</button>
+  </div>
+</div>
